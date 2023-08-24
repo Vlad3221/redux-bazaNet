@@ -1,23 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import './index.scss';
+import {Routes, Route, Link} from "react-router-dom";
+
+
+// pages
+import {HomePage} from "./pages/HomePage/index";
+import {NotFoundPage} from "./pages/NotFoundPage";
+import ProfilePage from "./pages/ProfilePage";
+import {useSelector} from "react-redux";
 
 function App() {
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+            {/*<Link to="/">Главная</Link>*/}
+          <span className="App-header__logo">Task React.js + Redux toolkit</span>
       </header>
+        <Routes>
+            <Route
+                path="/"
+                element={ <HomePage/> }
+            />
+            <Route
+                path="/profile/:id"
+                element={<ProfilePage/>}
+            />
+            <Route
+                path="*"
+                element={ <NotFoundPage/> }
+            />
+        </Routes>
     </div>
   );
 }
